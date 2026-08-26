@@ -7,6 +7,32 @@ EVENT="$1"
 # Read hook data from stdin
 HOOK_DATA=$(cat)
 
+SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+
+# On Windows, hand off to the PowerShell sibling: it raises a native toast and
+# parses the payload without jq. Everything below here is macOS-only.
+case "$(uname -s 2>/dev/null)" in
+    MINGW*|MSYS*|CYGWIN*)
+        PS_SCRIPT="$SCRIPT_DIR/ccnotify.ps1"
+        command -v cygpath &>/dev/null && PS_SCRIPT=$(cygpath -w "$PS_SCRIPT")
+
+        for PS_EXE in pwsh powershell.exe; do
+            if command -v "$PS_EXE" &>/dev/null; then
+                printf '%s' "$HOOK_DATA" |
+                    "$PS_EXE" -NoProfile -File "$PS_SCRIPT" -Event "$EVENT" 2>/dev/null
+                break
+            fi
+        done
+        exit 0
+        ;;
+esac
+
+# Needs jq to parse the payload and terminal-notifier to display anything.
+# Both are absent on machines without the macOS toolchain.
+if ! command -v jq &>/dev/null || ! command -v terminal-notifier &>/dev/null; then
+    exit 0
+fi
+
 show_notification() {
     local title="$1"
     local message="$2"
