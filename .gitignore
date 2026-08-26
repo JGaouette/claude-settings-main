@@ -1,0 +1,15 @@
+# Ignore everything by default
+/*
+
+# Track config only
+!/.gitignore
+!/settings.json
+!/CLAUDE.md
+!/CLAUDE_JESSE.md
+!/hooks/
+!/ccnotify/
+!/skills/
+!/commands/
+
+# Never track macOS cruft, even inside allowed dirs
+.DS_Store

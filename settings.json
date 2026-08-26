@@ -1,0 +1,93 @@
+{
+  "env": {},
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
+  "permissions": {
+    "allow": [
+      "Skill(*)",
+      "Bash",
+      "Edit",
+      "Read",
+      "Write",
+      "Glob",
+      "Grep",
+      "Task",
+      "LSP",
+      "WebFetch",
+      "WebSearch",
+      "mcp__context7__*",
+      "mcp__chrome-devtools__*",
+      "mcp__postgres__query",
+      "mcp__figma-desktop__*",
+      "mcp__figma-dev-mode-mcp-server__*",
+      "mcp__ppt__*"
+    ],
+    "deny": [],
+    "ask": [],
+    "defaultMode": "plan"
+  },
+  "model": "claude-fable-5[1m]",
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/ccnotify/ccnotify.sh Stop"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/ccnotify/ccnotify.sh Notification"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/inject-git-context.sh"
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/hooks/statusline-with-base.sh"
+  },
+  "enabledPlugins": {
+    "superpowers@superpowers-marketplace": true,
+    "safety-net@cc-marketplace": true,
+    "plannotator@plannotator": true,
+    "superpowers@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "plannotator": {
+      "source": {
+        "source": "github",
+        "repo": "backnotprop/plannotator"
+      }
+    },
+    "cc-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "kenryu42/cc-marketplace"
+      }
+    }
+  },
+  "outputStyle": "Explanatory",
+  "tui": "fullscreen",
+  "theme": "light"
+}
