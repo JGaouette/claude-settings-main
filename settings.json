@@ -28,7 +28,7 @@
     "ask": [],
     "defaultMode": "plan"
   },
-  "model": "claude-fable-5[1m]",
+  "model": "sonnet",
   "hooks": {
     "Stop": [
       {
