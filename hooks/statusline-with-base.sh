@@ -8,6 +8,12 @@ input=$(cat)
 # Get ccstatusline output first
 CCSTATUS=$(echo "$input" | npx -y ccstatusline@latest 2>/dev/null)
 
+PLAN=$(echo "$input" | bash "$HOOK_DIR/plan-usage.sh")
+
+if [ -n "$PLAN" ]; then
+    CCSTATUS="$CCSTATUS | $PLAN"
+fi
+
 # Add base branch if in git repo
 if git rev-parse --is-inside-work-tree &>/dev/null 2>&1; then
     BASE=$("$HOOK_DIR/git-base-branch.sh")
