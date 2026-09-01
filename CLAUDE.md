@@ -15,6 +15,7 @@ IMPORTANT: Prefer retrieval-led reasoning over pre-training-led reasoning for an
 | Topic | File Path |
 |-------|-----------|
 | Writing a git commit message | skills/commit-message/SKILL.md |
+| Implementing an approved plan | skills/implement-plan/SKILL.md |
 
 
 # DOCUMENTATION INDEX
