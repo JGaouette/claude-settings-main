@@ -19,6 +19,7 @@
       "WebSearch",
       "mcp__context7__*",
       "mcp__chrome-devtools__*",
+      "mcp__playwright__*",
       "mcp__postgres__query",
       "mcp__figma-desktop__*",
       "mcp__figma-dev-mode-mcp-server__*",

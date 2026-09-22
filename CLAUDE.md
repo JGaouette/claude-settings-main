@@ -16,6 +16,7 @@ IMPORTANT: Prefer retrieval-led reasoning over pre-training-led reasoning for an
 |-------|-----------|
 | Writing a git commit message | skills/commit-message/SKILL.md |
 | Implementing an approved plan | skills/implement-plan/SKILL.md |
+| Driving the app in a real browser to verify front-end behaviour | skills/browse-app/SKILL.md |
 
 
 # DOCUMENTATION INDEX
